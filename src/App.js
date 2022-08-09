@@ -21,7 +21,6 @@ class App extends Component {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.personalInfo)
   }
 
   onSubmitPersonalInfo(e) {
