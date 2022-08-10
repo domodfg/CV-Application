@@ -16,32 +16,20 @@ class App extends Component {
       personalInfo: { name: "", email: "", phone: "" },
       personalInfoSubmitted: "",
       education: [],
-      educationForm: [],
-      educationInfo: {
-        schoolName: "",
-        titleOfStudy: "",
-        dateOfStudy: "",
-        id: uniqid(),
-      },
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleEduChange = this.handleEduChange.bind(this);
+    this.handlePersonal = this.handlePersonal.bind(this);
     this.onSubmitPersonalInfo = this.onSubmitPersonalInfo.bind(this);
-    this.onSubmitEduInfo = this.onSubmitEduInfo.bind(this);
     this.addEduForm = this.addEduForm.bind(this);
     this.onDeleteEduForm = this.onDeleteEduForm.bind(this);
   }
 
-  handleChange(e) {
+  handlePersonal(e) {
     this.setState({
       ...this.state,
       personalInfo: {
         ...this.state.personalInfo,
         [e.target.name]: e.target.value,
-      },
-      educationInfo: {
-        ...this.state.educationInfo,
-        [e.target.name]: e.target.value,
-        id: this.state.educationInfo.id,
       },
     });
   }
@@ -54,49 +42,50 @@ class App extends Component {
     });
   }
 
-  onSubmitEduInfo(e) {
-    e.preventDefault();
-    if (
-      this.state.educationInfo.schoolName !== "" &&
-      this.state.educationInfo.titleOfStudy !== "" &&
-      this.state.educationInfo.dateOfStudy !== ""
-    ) {
-      this.setState({
-        ...this.state,
-        education: this.state.education.concat(this.state.educationInfo),
-        educationInfo: {
-          schoolName: "",
-          titleOfStudy: "",
-          dateOfStudy: "",
-          id: uniqid(),
-        },
-      });
-    }
+  handleEduChange(e) {
+    const targeted = e.target.name;
+    const index = this.state.education.findIndex(
+      (element) => element.id === e.target.getAttribute("data")
+    );
+    let education = [...this.state.education];
+    let edited = { ...education[index] };
+    edited.info[targeted] = e.target.value;
+    education[index] = edited;
+
+    this.setState({
+      ...this.state,
+      education: education,
+    });
   }
 
   onDeleteEduForm(e) {
     this.setState({
       ...this.state,
-      educationForm: this.state.educationForm.filter(function (form, index) {
-        return index != e.target.id;
-      }),
+      education: this.state.education.filter((obj) => obj.id !== e.target.id),
     });
   }
 
   addEduForm(e) {
+    const uniqueID = uniqid();
     this.setState({
       ...this.state,
-      educationForm: this.state.educationForm.concat(
-        <EducationForm
-          onChangeHandler={this.handleChange}
-          onButtonClicked={this.onSubmitEduInfo}
-          educationInfo={this.props.educationInfo}
-          onDelete={this.onDeleteEduForm}
-          key={uniqid()}
-        />
-      ),
+      education: this.state.education.concat({
+        id: uniqueID,
+        form: (
+          <EducationForm
+            onChangeHandler={this.handleEduChange}
+            onDelete={this.onDeleteEduForm}
+            key={uniqueID}
+            id={uniqueID}
+          />
+        ),
+        info: {
+          schoolName: "",
+          titleOfStudy: "",
+          dateOfStudy: "",
+        },
+      }),
     });
-    console.log(this.state.educationForm);
   }
 
   render() {
@@ -114,15 +103,11 @@ class App extends Component {
       <div className="App">
         <div className="form">
           <PersonalInfo
-            onChangeHandler={this.handleChange}
+            onChangeHandler={this.handlePersonal}
             onButtonClicked={this.onSubmitPersonalInfo}
           />
           <DisplayEducationForm
-            educationForm={this.state.educationForm}
-            onChangeHandler={this.handleChange}
-            onButtonClicked={this.onSubmitEduInfo}
-            educationInfo={this.state.educationInfo}
-            onDelete={this.onDeleteEduForm}
+            educationForm={this.state.education}
           />
           <button onClick={this.addEduForm}>Add education</button>
         </div>

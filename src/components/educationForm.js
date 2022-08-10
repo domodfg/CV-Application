@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 
 class EducationForm extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
-      <form id={this.props.id}>
+      <form>
         <label htmlFor="schoolName">School:</label>
         <input
           type="text"
           name="schoolName"
           id="schoolName"
+          data={this.props.id}
           onChange={this.props.onChangeHandler}
-          /*             value={this.props.educationInfo.schoolName} */
           required
         />
         <label htmlFor="titleOfStudy">Title of study:</label>
@@ -22,8 +18,8 @@ class EducationForm extends Component {
           type="text"
           name="titleOfStudy"
           id="titleOfStudy"
+          data={this.props.id}
           onChange={this.props.onChangeHandler}
-          /*             value={this.props.educationInfo.titleOfStudy} */
           required
         />
         <label htmlFor="dateOfStudy">Date of study:</label>
@@ -31,13 +27,10 @@ class EducationForm extends Component {
           type="text"
           name="dateOfStudy"
           id="dateOfStudy"
+          data={this.props.id}
           onChange={this.props.onChangeHandler}
-          /*            value={this.props.educationInfo.dateOfStudy} */
           required
         />
-        <button type="submit" onClick={this.props.onButtonClicked}>
-          Submit
-        </button>
         <button
           type="button"
           onClick={this.props.onDelete}

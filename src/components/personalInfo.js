@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class PersonalInfo extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div className="personalInfoForm">
