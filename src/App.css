@@ -116,6 +116,7 @@ label {
 
 .work {
   padding: 0vw 2vw;
+  overflow-wrap: break-word;
 }
 
 
