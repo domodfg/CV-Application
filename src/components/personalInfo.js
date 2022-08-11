@@ -26,6 +26,13 @@ class PersonalInfo extends Component {
             id="phone"
             onChange={this.props.onChangeHandler}
           />
+            <label htmlFor="phone">Description:</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            onChange={this.props.onChangeHandler}
+          />
           <button onClick={this.props.onButtonClicked}>Submit</button>
         </form>
       </div>

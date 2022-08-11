@@ -25,8 +25,8 @@ class DisplayEducationForm extends Component {
 
   render() {
     return (
-      <div className="education">
-        {this.props.educationForm.map((form, i) => {
+      <div className="educationForm">
+        {this.props.educationForm.map((form) => {
           return form.form;
         })}
       </div>
