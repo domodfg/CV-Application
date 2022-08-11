@@ -1,3 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.1fr 1fr;
+  gap: 2vw;
+  background-color: #e5fffa;
+}
+
+h1 {
+  grid-column: 1/3;
+  justify-self: center;
+  align-self: end;
+  margin: 0;
+  padding-top: 1vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.form,
+.educationForm,
+.workForm {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  width: 40vw;
+  justify-self: end;
+}
+
+button {
+  align-self: flex-end;
+}
+
+input {
+  margin-left: 0.5vw;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+label {
+  justify-self: flex-end;
+}
+
 .Resume {
-  border: 1px black solid;  
+  display: flex;
+  flex-direction: column;
+  border: 1px #cbcbcb solid;
+  width: max(40vw, 300px);
+  aspect-ratio: 3/4;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: max(1.2vw, 10px);
+  background-color: white;
+}
+
+.contact {
+  background-color: #bfffff;
+  padding: 0vw 2vw;
+}
+
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  min-height: 10vw;
+  overflow-wrap: break-word;
+}
+
+.name {
+  font-size: max(2vw, 20px);
+}
+
+.description {
+  padding: 0vw 2vw;
+}
+
+.description, .task {
+  font-size: max(0.9vw, 10px);
+  max-width: 35vw;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  min-height: 10vw;
+  padding: 0vw 2vw;
+}
+
+.eduInfo,
+.eduRight, .job, .workRight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vw;
+  font-size: max(0.9vw, 10px);
+}
+
+.eduInfo, .job {
+  height: 1.5vw;
+}
+
+.titleOfStudy, .position {
+  font-size: max(1.2vw, 10px);
+  font-weight: 500;
+  color: #686868;
+  font-style: italic;
+}
+
+.work {
+  padding: 0vw 2vw;
+}
+
+
+h2 {
+  font-weight: 300;
+  border-bottom: 1px #dbdada solid;
+  font-size: max(1.2vw, 13px);
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(232, 240, 254);
+  padding-left: 5px;
+}
+
+button {
+  border: none;
+  padding: 0.5vh 1vw;
+  border-radius: 10px;
+  background-color: #8effbb;
+}
+
+.delete {
+  background-color: #ff9494;
 }

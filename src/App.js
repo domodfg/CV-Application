@@ -15,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      personalInfo: { name: "", email: "", phone: "" , description:""},
+      personalInfo: { name: "", email: "", phone: "", description: "" },
       personalInfoSubmitted: "",
       education: [],
       work: [],
@@ -106,10 +106,9 @@ class App extends Component {
 
     this.setState({
       ...this.state,
-     work:work,
+      work: work,
     });
   }
-
 
   onDeleteWorkForm(e) {
     this.setState({
@@ -143,13 +142,15 @@ class App extends Component {
   }
 
   render() {
-    let nameInfo;
+    let nameInfo = <div className="personalInfo"></div>;
     if (this.state.personalInfoSubmitted) {
       nameInfo = (
         <div className="personalInfo">
-          <p className="name">{this.state.personalInfo.name}</p>
-          <p className="email">{this.state.personalInfo.email}</p>
-          <p className="phone">{this.state.personalInfo.phone}</p>
+          <div className="contact">
+            <p className="name">{this.state.personalInfo.name}</p>
+            <p className="email">{this.state.personalInfo.email}</p>
+            <p className="phone">{this.state.personalInfo.phone}</p>
+          </div>
           <p className="description">{this.state.personalInfo.description}</p>
         </div>
       );
@@ -169,9 +170,7 @@ class App extends Component {
         </div>
         <div className="Resume">
           {nameInfo}
-          <h2>Education</h2>
           <DisplayEducation education={this.state.education} />
-          <h2>Work experience</h2>
           <DisplayWork work={this.state.work} />
         </div>
       </div>
